@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Student page</title>
+</head>
+<body>
+  
+    <br>
+    <br>
+
+    <!-- Text -->
+    <div class="row">
+        <div class="col-md-6">
+            <p>Payment</p>
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="row">
+        <div class="col-md-6">
+            <a href="/Home/Subscribe"><button type="button" class="btn btn-default">Subscribe</button></a>
+            <a href="/Home/Unsubscribe"><button type="button" class="btn btn-default">Unsubscribe</button></a>
+        </div>
+    </div>
+    <br><br>
+
+    <!-- Text -->
+    <div class="row">
+        <div class="col-md-6">
+            <p>Message a mentor</p>
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="row">
+        <div class="col-md-6">
+            <a href="/Home/GetMailStudent"><button type="button" class="btn btn-default">See Messages</button></a>
+            <a href="/Home/SendMailStudent"><button type="button" class="btn btn-default">Send Message</button></a>
+        </div>
+    </div>
+    <br><br>
+   
+
+    <p>Find a mentor</p>
+    
+    <form method="get" action="/Home/StudentPage">
+                 
+                    <input type="text" name="id" placeholder="subject"/>
+                    <input type="submit"/>
+                 </form>
+
+<br><br>
+
+        <table class="table table-striped">
+          <tr>     
+            <th>Pic</th>
+            <th>Name</th> 
+            <th>Description</th> 
+            <th>Description</th>         
+          </tr>
+
+        @foreach(var ment in @ViewBag.ment)        
+        {
+           // if(ment.Online == 1 && @ment.Subjects == @ViewBag.subject){
+               if(ment.Online == 1 && (@ment.Subjects == @ViewBag.subject || @ViewBag.subject == null)){
+                string x=@ment.Imgurl;
+                <tr>
+                    <td><img src=@x alt="image" height="100" width="100"  onmouseover="" style="cursor: pointer;"/></td>
+                    <td> @ment.Name</td>
+                    <td> @ment.Subjects</td>
+                    <td><a href="https://mentoronline.tuteeapp.com/111111111?admin=true&origin=localhost:5000&nick=MentorName">Connect with Mentor</a></td>
+                
+                </tr>
+            }
+        }
+    </table>
+
+
+<!-- Button trigger modal -->
+<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>-->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- Titel -->
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <!-- Close -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+
+data-toggle="modal" data-target="#exampleModal"
+
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>
+-->
+</body>
+</html>

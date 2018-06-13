@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Mentor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <hr>
+    
+
+    <br>
+     
+        <hr>
+    <table class="table table-striped">
+
+         <tr>
+                
+                <th>Name</th>
+                <th>Password</th> 
+                <th>Email</th>  
+                <th>Subjects</th>
+                <th>Role</th>
+                <th>Online</th>
+                <th>Imgurl</th>
+              
+            </tr>
+
+        @foreach(var ment in @ViewBag.ment)        
+        {
+            if(ment.MentorId == @ViewBag.number){
+                string x=@ment.Imgurl;
+                <tr>
+                    
+                    <td> @ment.Name</td>
+                    <td> @ment.Password </td> 
+                    <td> @ment.Email</td>
+                    <td> @ment.Subjects </td> 
+                    <td> @ment.Role</td>
+                    <td> @ment.Online </td> 
+                    <td><img src=@x alt="image" height="100" width="100"/></td>
+                </tr>
+            }
+        }
+    </table>
+    
+    
+    </div>
+</body>
+</html>

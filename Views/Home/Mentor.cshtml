@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mentor Page</title>
+</head>
+<body>
+    <br><br>
+    <!-- Text -->
+    <div class="row">
+        <div class="col-md-6">
+            <p>If a user is offline a student can not see him on the list of mentors to connect with</p>
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="row">
+        <div class="col-md-6">
+           <a href="/Home/Online"><button type="button" class="btn btn-default">Online</button></a>
+           <a href="/Home/Offline"><button type="button" class="btn btn-default">Offline</button></a>
+        </div>
+    </div>
+    <br><br>
+    <!-- Text -->
+    <div class="row">
+        <div class="col-md-6">
+            <p>Message the students</p>
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="row">
+        <div class="col-md-6">
+            <a href="/Home/GetMailMentor"><button type="button" class="btn btn-default">See Messages</button></a>
+            <a href="/Home/SendMailMentor"><button type="button" class="btn btn-default">Send Message</button></a>
+        </div>
+    </div>
+    <br><br>
+
+    <!-- Connect with a student -->
+    <div class="row">
+        <div class="col-md-6">
+             <a href="https://mentoronline.tuteeapp.com/111111111?admin=true&origin=localhost:5000&nick=MentorName"><button type="button" class="btn btn-success">Connect with a student</button></a>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!-- Profile -->
+    <div class="row">
+        <div class="col-md-6">
+             <p>Profile</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+          <form method = "get" action="/Home/Mentor"> 
+              <input type="number" required="required" name="ID" placeholder="ID"/>
+              <input type="submit"/>
+          </form>
+          <table class="table table-striped">
+              <tr>
+                <th>MentorId</th>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Email</th>
+                <th>Subjects</th> 
+                <th>Role</th> 
+                <th>Online</th> 
+                <th>Imgurl</th>  
+              </tr>
+
+              @foreach(var ment in @ViewBag.ment)        
+              {
+                if(ment.MentorId == @ViewBag.number)
+                {
+                  string x=@ment.Imgurl;
+                  <tr>
+                    <td> @ment.MentorId </td>
+                    <td> @ment.Name </td>
+                    <td> @ment.Password </td>
+                    <td> @ment.Email </td> 
+                    <td> @ment.Subjects </td> 
+                    <td> @ment.Role </td> 
+                    <td> @ment.Online </td> 
+                    <td><img src=@x alt="image" height="100" width="100"/></td>
+                  </tr>
+                }
+              }
+         </table>
+       </div>
+    </div>
+
+
+</body>
+</html>
